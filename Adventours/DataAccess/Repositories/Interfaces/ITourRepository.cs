@@ -2,7 +2,7 @@
 
 namespace DataAccess.Repositories.Interfaces;
 
-internal interface ITourRepository : IRepository<TourEntity>
+public interface ITourRepository : IRepository<TourEntity>
 {
     Task<ICollection<TourEntity>> GetAllByTravelerId(int travelerId);
 
