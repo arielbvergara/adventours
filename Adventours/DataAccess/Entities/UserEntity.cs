@@ -7,4 +7,8 @@ public class UserEntity : Entity
     public string Email { get; set; } = null!;
 
     public string? PhoneNumber { get; set; }
+
+    public ICollection<RoleEntity>? Roles { get; set; }
+
+    public ICollection<UserTours>? Tours { get; set; }
 }

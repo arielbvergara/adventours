@@ -4,6 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>e0232247-b7c5-4001-9746-a2c0fe7ffb88</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,10 +14,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Features\Tours\GetToursByTravelerId\" />
   </ItemGroup>
 
 </Project>

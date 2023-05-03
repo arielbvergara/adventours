@@ -12,5 +12,26 @@ public class TourEntity : Entity
 
     public UserEntity TourLeader { get; set; } = null!;
 
-    public List<UserTours>? Travelers { get; set; }
+    public IList<UserTours>? Travelers { get; set; }
+
+    public TourState State { get; private set; } = TourState.ComingSoon;
+
+    public void CancelTour()
+    {
+        State = TourState.Cancelled;
+        LastUpdatedUtc = DateTime.UtcNow;
+    }
+
+    public void CompleteTour()
+    {
+        State = TourState.Completed;
+        LastUpdatedUtc = DateTime.UtcNow;
+    }
+}
+
+public enum TourState
+{
+    ComingSoon,
+    Cancelled,
+    Completed
 }

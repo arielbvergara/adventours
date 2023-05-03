@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using DataAccess.Entities;
 
-namespace DataAccess.Repositories;
+namespace DataAccess;
 
 public class AdventourContext : DbContext
 {
@@ -14,13 +14,22 @@ public class AdventourContext : DbContext
 
     public DbSet<RoleEntity> Roles => Set<RoleEntity>();
 
-    public DbSet<RolePermissions> RolePermissions => Set<RolePermissions>();
-
     public DbSet<TourEntity> Tours => Set<TourEntity>();
 
     public DbSet<UserEntity> Users => Set<UserEntity>();
 
     public DbSet<UserTours> UserTours => Set<UserTours>();
 
-    public DbSet<UserRoles> UserRoles => Set<UserRoles>();
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<UserEntity>()
+            .HasMany(e => e.Roles)
+            .WithMany(e => e.Users)
+            .UsingEntity("UserRoles");
+
+        modelBuilder.Entity<RoleEntity>()
+            .HasMany(e => e.Permissions)
+            .WithMany(e => e.Roles)
+            .UsingEntity("RolePermissions");
+    }
 }

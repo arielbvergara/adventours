@@ -6,5 +6,5 @@ public class PermissionEntity : Entity
 
     public string? Description { get; set; }
 
-    public ICollection<RolePermissions>? RolePermissions { get; set; }
+    public ICollection<RoleEntity>? Roles { get; set; }
 }

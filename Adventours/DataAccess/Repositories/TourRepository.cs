@@ -12,7 +12,7 @@ public class TourRepository : RepositoryBase<TourEntity>, ITourRepository
 
     public async Task<ICollection<TourEntity>> GetAllByTravelerId(int userId) => 
         await DbSet
-            .Where(tour => tour.Travelers != null && tour.Travelers.Any(traveler => traveler.UserId == userId))
+            .Where(tour => tour.Travelers != null && tour.Travelers.Any(traveler => traveler.Id == userId))
             .ToListAsync();
 
     public async Task<ICollection<TourEntity>> GetAllByTourLeaderId(int tourLeaderId) => 

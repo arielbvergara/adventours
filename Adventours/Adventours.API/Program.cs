@@ -1,11 +1,18 @@
+using Adventours.API.Features.Tours;
 using Core;
+using DataAccess.Constants;
+
+const string ConnectionStringName = "ConnectionString";
 
 var builder = WebApplication.CreateBuilder(args);
+
+var connectionString = builder.Configuration[ConfigurationConstants.DatabaseConnectionString];
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddDataServiceCollection(connectionString);
 builder.Services.AddApplicationServices();
 
 var app = builder.Build();
@@ -39,6 +46,7 @@ app.MapGet("/weatherforecast", () =>
 .WithName("GetWeatherForecast")
 .WithOpenApi();
 
+app.GetTourByTravelerId();
 app.Run();
 
 internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)

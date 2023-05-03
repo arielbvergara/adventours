@@ -6,5 +6,7 @@ public class RoleEntity : Entity
 
     public string? Description { get; set; }
 
-    public ICollection<RolePermissions>? RolePermissions { get; set; }
+    public ICollection<PermissionEntity>? Permissions { get; set; }
+
+    public ICollection<UserEntity>? Users { get; set; }
 }
